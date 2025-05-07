@@ -1,0 +1,77 @@
+ExampleString.scala
+ object ExampleString {
+ def main(args: Array[String]) {
+ //declare and assign string variable "text"
+ val text : String = "You are reading SCALA programming 
+language.";
+ }
+ }
+ //print the value of string variable "text"
+ println("Value of text is: " + text);
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ ExampleCheckNumber.scala
+
+ /**Scala program to find if a number is negative or positive.*/
+ object ExCheckNumber {
+ def main(args: Array[String]) {
+ /**declare a variable*/
+ var number= (-100);
+ if(number==0){
+ println("number is zero");
+ }
+ else if(number>0){
+ println("number is positive");
+ }
+ else{
+ println("number is negative");
+ }
+ }
+ }
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+ ExampleFindLargest.scala
+
+ /**Scala Program to find largest number among two numbers.*/
+ object ExFindLargest {
+ def main(args: Array[String]) {
+ var number1=20;
+ var number2=30;
+ var x = 10;
+ if( number1>number2){
+ println("Largest number is:" + number1);
+ }
+ else{
+ println("Largest number is:" + number2);
+ }
+ }
+ }
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+WordCount.scala
+
+ import scala.io.Source
+ object WordCount {
+  def main(args: Array[String]): Unit = {
+    val filename = "input.txt"
+    val wordCounts = countWords(filename)
+    wordCounts.foreach { case (word, count) =>
+      println(s"$word: $count")
+    }
+  }
+  def countWords(filename: String): Map[String, Int] = {
+    val source = Source.fromFile(filename)
+    val wordCounts = source.getLines()
+ .flatMap(_.split(" "))
+                        .foldLeft(Map.empty[String, 
+Int].withDefaultValue(0)) { (counts, word) =>
+      counts.updated(word.toLowerCase, counts(word.toLowerCase) + 1)
+    }
+    source.close()
+    wordCounts
+}
+}
